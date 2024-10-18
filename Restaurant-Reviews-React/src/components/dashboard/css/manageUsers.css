@@ -1,0 +1,11 @@
+.manage-users-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+.user-card > img {
+  width: 100px;
+}
+

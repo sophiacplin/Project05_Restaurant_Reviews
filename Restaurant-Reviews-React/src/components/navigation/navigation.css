@@ -1,0 +1,41 @@
+#navbar{
+  width: 100%;
+  background-color: yellowgreen;
+  top: 0;
+  left:0;
+  position: fixed;
+  z-index: 2;;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+#navbar > h2 {
+  text-align: left;
+  cursor: pointer;
+  color: white;
+}
+
+#navbar > * {
+  margin: 10px;
+}
+
+.dashboard-sidebar {
+
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: yellowgreen;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+  z-index: 1;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-sidebar > * {
+  margin: 20px;
+}
