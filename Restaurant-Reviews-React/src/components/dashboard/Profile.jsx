@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import DashboardSidebar from "../navigation/DashboardSidebar";
-import './dashboardMainSection.css';
+import './css/dashboardMainSection.css';
 import { fetchSingleUser } from "../../API";
 import UserContext from '../login/UserContext';
 

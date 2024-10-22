@@ -1,0 +1,18 @@
+#add-restaurant-request-form {
+  display: grid;
+  grid-template-rows: 60px 60px 60px 60px 60px 60px;
+  margin: 20px;
+  padding: 30px;
+  border: 1px solid black;
+  width: 300px;
+}
+
+#add-restaurant-request-container {
+  width: 100%;
+  text-align: -webkit-center;
+  margin-top: 100px;
+}
+
+#add-restaurant-request-form > label {
+  width:100px;
+}

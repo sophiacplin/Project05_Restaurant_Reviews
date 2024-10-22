@@ -1,5 +1,5 @@
 import DashboardSidebar from '../navigation/DashboardSidebar'
-import './dashboardMainSection.css';
+import './css/dashboardMainSection.css';
 
 
 

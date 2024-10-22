@@ -34,14 +34,14 @@ commentRouter.post('/reviews/:id', authenticateToken, async(req, res, next) => {
 commentRouter.get('/reviews/:id', async(req, res, next) => {
   const review_id = req.params.id;
   try{
-    
     const reviewComments = await fetchReviewComments(review_id);
-    if(reviewComments.length > 0){
-      res.send({reviewComments});
-    }else{
-      res.status(200).send({message:'There is no comment in this review'});
+    if(reviewComments.length > 0) {
+      res.status(200).send(reviewComments);
+    }else {
+      res.status(200).send([]);
     }
   }catch(err){
+    console.error('Error fetching comments', err);
     next(err);
   }
 });

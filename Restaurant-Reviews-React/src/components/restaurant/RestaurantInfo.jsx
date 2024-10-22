@@ -35,6 +35,7 @@ export default function RestaurantInfo() {
     height: '300px'
   };
 
+
   return(
     <div className="restaurant-main-section">
       <div style={backgroundImageStyle}></div>

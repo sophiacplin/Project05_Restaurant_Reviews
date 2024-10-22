@@ -3,8 +3,9 @@ import { createContext, useState, useEffect } from "react";
 const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
   const fetchToken = async () => {
@@ -19,6 +20,7 @@ export const UserProvider = ({children}) => {
           role: decodedToken.role,
         };
         setUser(userInfo);
+        setIsAuthenticated(true);
       }catch(err) {
         console.error("Invalid token", err);
       }
@@ -28,8 +30,15 @@ export const UserProvider = ({children}) => {
   fetchToken();
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    setIsAuthenticated(false);
+  }
+
   return(
-    <UserContext.Provider value={{user, setUser, loading}}>
+    <UserContext.Provider value={{user, setUser, loading, isAuthenticated, logout}}>
       {children}
     </UserContext.Provider>
   )

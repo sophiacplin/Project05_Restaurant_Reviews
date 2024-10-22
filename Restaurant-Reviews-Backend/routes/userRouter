@@ -28,8 +28,7 @@ userRouter.get('/:id', async(req, res, next) => {
 //login route
 userRouter.post('/login', async (req, res, next) => {
   try {
-    const username = req.body.username; 
-    const password = req.body.password;
+    const { username, password } = req.body;
 
     if (!username || !password) {
       return res.status(400).send('Username and password are required');
@@ -47,16 +46,14 @@ userRouter.post('/login', async (req, res, next) => {
     console.log(user);
     // Generate JWT token
     const token = jwt.sign({ id: user.id, role: user.role }, jwtSecret, { expiresIn: '1h' });
-    console.log("Generated JWT:", token)
-    res.status(200).send({ token });
+    console.log("Generated JWT:", token);
+
+    const {password: _, ...userWithoutPassword } = user;
+
+    res.status(200).send({ token, user: userWithoutPassword });
   } catch (error) {
     next(error);
   }
-});
-
-//log out
-userRouter.post('/logout', (req, res) => {
-  res.send({message: 'You have been logged out successfully'});
 });
 
 
@@ -68,13 +65,16 @@ userRouter.post('/', async(req, res, next) => {
   try{
     const findUser = await fetchUserWithUsername(username)
     if(findUser){
-      res.send("This username is taken.")
-    }else{
-      const newUser = await createAccount({username, password})
-      const token = await jwt.sign({id: newUser.id}, jwtSecret)
-      res.send(token);
+      return res.status(400).send("This username is taken.");
     }
-    res.send(await fetchSingleUser(req.params.id));
+      const newUser = await createAccount({username, password})
+      const token = jwt.sign({id: newUser.id, role: newUser.role}, jwtSecret, {
+        expiresIn: '1h',
+      });
+      console.log("New User:", newUser);
+      console.log("JWT Token", token);
+    
+    res.status(201).send({token, user:newUser});
   }catch(error){
     next(error)
   }

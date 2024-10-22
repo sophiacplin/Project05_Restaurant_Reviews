@@ -1,14 +1,13 @@
-import './forms.css'
+import './css/RequestToAddRestaurant.css'
 
 
 
 export default function RequestToAddRestaurant() {
 
   return(
-    <div>
-      <h2>Form for user to send a request to admin to add a new restaurant.</h2>
-      <form >
-        <h2>Request to Add Restaurant</h2>
+    <div id='add-restaurant-request-container'>
+      <h2>Request to Add Restaurant</h2>
+      <form id='add-restaurant-request-form'>
         <label>
           Name:
           <input />

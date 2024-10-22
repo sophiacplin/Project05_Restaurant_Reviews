@@ -14,7 +14,6 @@ reviewRouter.get('/', async(req, res, next) => {
 });
 
 //create review
-//owner should not be able to review their own restaurant
 reviewRouter.post('/restaurants/:id', authenticateToken, async(req, res, next) => {
   const restaurant_id = req.params.id;
   const user_id = req.user.id;
@@ -29,7 +28,8 @@ reviewRouter.post('/restaurants/:id', authenticateToken, async(req, res, next) =
       return res.status(400).send({message: 'Must enter rating'})
     }
 
-    res.send(await createReview({restaurant_id, user_id, rating, text}));
+    const newReview = await createReview({restaurant_id, user_id, rating, text});
+    res.status(201).send(newReview);
   }catch(err){
     next(err);
   }

@@ -6,3 +6,47 @@
   text-align: center;
 }
 
+.restaurant-page {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.tab-navigation {
+  
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: lightgray;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab-button.active {
+  background-color: darkgray;
+  font-weight: bold;
+}
+
+.tab-button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.tab-content {
+  border-top: 2px solid black;
+  padding: 20px;
+}
+
+.review-card{
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.comment-card {
+  border: .5px solid black;
+}

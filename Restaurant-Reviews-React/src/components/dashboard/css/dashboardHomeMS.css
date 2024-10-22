@@ -1,7 +1,7 @@
-.dashboard-main-section {
+.dashboard-home-main-section {
+  margin-top: 100px;
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin-top: 55px;
   margin-left: 250px;
 }

@@ -64,7 +64,7 @@ export default function SearchRestaurantToReview() {
               <div key={restaurant.id} className="search-restaurant-card">
                 <img src= {restaurant.image} alt={`image of ${restaurant.name}`} />
                 <h3>{restaurant.name}</h3>
-                <button onClick={() => nav(`/review/${restaurant.id}/form`)} >
+                <button onClick={() => nav(`/restaurant/${restaurant.id}/review/form`)} >
                   Review this Restaurant
                 </button>
               </div>
