@@ -1,4 +1,4 @@
-import './css/RequestToAddRestaurant.css'
+import './css/requestToAddRestaurant.css'
 
 
 
