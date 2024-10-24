@@ -140,6 +140,46 @@ export const getRestaurantReviews = async (id, setRestaurantReviews, setLoading,
   }
 };
 
+export const fetchSingleReview = async (id) => {
+  try{
+    const response = await apiClient.get(`/reviews/${id}`);
+    return response.data
+  }catch(err) {
+    console.error('Error fetching review', err);
+    throw err;
+  }
+};
+
+export const fetchUserReviews = async (userId, token) => {
+  try{
+    const response = await apiClient.get(`/reviews/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  }catch(err) {
+    console.error('Error fetching reviews', err);
+    throw err;
+  }
+};
+
+export const getUserReviews = async (userId, setUserReviews, setLoading, setError) => {
+  try{
+    const token = localStorage.getItem('token');
+    const data = await fetchUserReviews(userId, token);
+    if(Array.isArray(data)) {
+      setUserReviews(data);
+    }else {
+      throw new Error('Expected an array of reviews');
+    }
+    setLoading(false);
+  }catch (err) {
+    setError('Failed to load reviews');
+    setLoading(false);
+  }
+};
+
 export const addRestaurantReview = async (id, review, token) => {
   const response = await apiClient.post(`/reviews/restaurants/${id}`,
     review,
@@ -211,4 +251,17 @@ export const addReviewComment = async (reviewId, text, token) => {
   }
 };
 
-
+export const updateReviewComment = async(commentId, text, token) => {
+  try{
+    const response = await apiClient.patch(`/comments/${commentId}`, {text},{
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  }catch (err){
+    console.error("Failed to update comment", err);
+    throw err;
+  }
+};

@@ -421,6 +421,7 @@ const fetchAllReviews = async() => {
   return response.rows
 };
 
+
 //fetch reviews of a restaurant
 const fetchRestaurantReviews = async(restaurant_id) => {
   const SQL = `

@@ -30,7 +30,7 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/restaurant/:id' element = {<RestaurantPage/>} />
         <Route path='/restaurant/:id/review/form' element={<AddRestaurantReview/>} />
-        <Route path='/restaurant/:id/review/:id/edit' element={<UpdateReview/>} />
+        <Route path='/restaurant/:restaurantId/review/:reviewId/edit' element={<UpdateReview/>} />
         <Route path='/form/request-to-add-restaurant' element={<RequestToAddRestaurant/>} />
         <Route path='/search-restaurant-to-review' element={<SearchRestaurantToReview/>} />
         <Route path='/dashboard' element={<DashboardHome/>} />

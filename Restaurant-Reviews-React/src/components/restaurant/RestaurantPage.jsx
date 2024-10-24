@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantInfo from "./RestaurantInfo";
 import RestaurantReviews from "./RestaurantReviews";
-import AddRestaurantReview from "../forms/AddRestaurantReview";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 
@@ -21,6 +20,7 @@ export default function RestaurantPage (){
   const handleClick = () => {
     nav(`/restaurant/${id}/review/form`)
   }
+
   
   return (
     <div className="restaurant-page">

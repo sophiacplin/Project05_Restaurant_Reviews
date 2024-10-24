@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchRestaurantReviews, updateUserReview } from "../../API";
+import { fetchSingleReview, updateUserReview } from "../../API";
 
 
 
@@ -14,12 +14,10 @@ export default function UpdateReview () {
   useEffect(() => {
     const fetchReview = async () => {
       try{
-        const reviews = await fetchRestaurantReviews(restaurantId);
-        reviews.map((review) => {
+        const review = await fetchSingleReview(reviewId);
           setRating(review.rating);
           setText(review.text);
-        })
-        
+
       }catch (err){
         console.error("Failed to load review", err);
         setError("Failed to load review");
@@ -35,7 +33,7 @@ export default function UpdateReview () {
       const token = localStorage.getItem("token");
       await updateUserReview(reviewId, review, token);
       alert("Review updated successfully!");
-      nav(`restaurant/${restaurantId}`, {state: {activeTab: "reviews"}});
+      nav(`/restaurant/${restaurantId}`, {state: {activeTab: "reviews"}});
     }catch(err) {
       console.error('Failed to update review', err);
       setError("Failed to update review");
