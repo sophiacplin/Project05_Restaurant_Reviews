@@ -6,7 +6,8 @@ const {client} = require('./db');
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://project05-restaurant-reviews.onrender.com'
+  'https://project05-restaurant-reviews.onrender.com',
+  'https://retrev.netlify.app'
 ];
 
 const corsOptions = {
