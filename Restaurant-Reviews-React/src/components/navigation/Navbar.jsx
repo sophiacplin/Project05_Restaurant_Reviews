@@ -7,7 +7,7 @@ import UserContext from "../login/UserContext";
 
 export default function Navbar() {
   const nav = useNavigate();
-  const { isAuthenticated, logout, user} = useContext(UserContext);
+  const { isAuthenticated, logout} = useContext(UserContext);
 
   const handleLogout = () => {
     logout();

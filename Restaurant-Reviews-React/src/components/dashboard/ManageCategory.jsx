@@ -1,6 +1,5 @@
 import DashboardSidebar from "../navigation/DashboardSidebar";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getCategories } from "../../API";
 
 
@@ -8,7 +7,7 @@ export default function ManageCategory() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const nav = useNavigate();
+  
 
   useEffect(() => {
     getCategories(setCategories, setLoading, setError);

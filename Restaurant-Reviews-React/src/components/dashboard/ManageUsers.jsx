@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import DashboardSidebar from "../navigation/DashboardSidebar";
-import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../API";
 import './css/manageUsers.css'
 
@@ -10,7 +9,7 @@ export default function ManageUsers() {
   const[users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const nav = useNavigate();
+  
 
   useEffect(() => {
     getUsers(setUsers, setLoading, setError);

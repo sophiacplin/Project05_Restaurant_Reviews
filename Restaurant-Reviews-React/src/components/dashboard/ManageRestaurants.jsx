@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import DashboardSidebar from "../navigation/DashboardSidebar";
-import { useNavigate } from "react-router-dom";
 import { getRestaurants } from "../../API";
 
 
@@ -11,7 +10,7 @@ export default function ManageRestaurants(){
   const [restaurants, setRestaurants]  = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const nav = useNavigate();
+  
 
   useEffect(() => {
     getRestaurants(setRestaurants, setLoading, setError)

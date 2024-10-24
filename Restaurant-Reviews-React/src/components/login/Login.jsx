@@ -59,7 +59,7 @@ export default function Login () {
         </label>
         {errorMessage && <p className="error-message" >{errorMessage}</p>}
         <button type="submit">Login</button>
-        <button onClick={handleNavToRegister}>Don't have an account?</button>
+        <button onClick={handleNavToRegister}>Sign Up</button>
       </form>
     </div>
   )

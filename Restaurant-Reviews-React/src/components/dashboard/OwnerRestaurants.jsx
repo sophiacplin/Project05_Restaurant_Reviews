@@ -9,7 +9,7 @@ export default function OwnerRestaurants(){
     <>
     <DashboardSidebar />
     <div className="dashboard-main-section">
-      <h2>This is a dashboard page for owners to see a list of restaurants they own, or admin's Manage Restaurants page to nav to.</h2>
+      <h2>This is a dashboard page for owners to see a list of restaurants they own, or admin Manage Restaurants page to nav to.</h2>
     </div>
     </>
   )

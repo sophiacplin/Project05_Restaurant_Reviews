@@ -1,9 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import { getReviewComments, updateReviewComment } from "../../API";
-import { useParams, useNavigate } from "react-router-dom";
-import UpdateReview from "./UpdateReview";
+import { updateReviewComment } from "../../API";
 import UserContext from "../login/UserContext";
-
+import PropTypes from 'prop-types';
 
 export default function ReviewComments ({ comments, fetchComments }) {
   const {user} = useContext(UserContext);
@@ -71,3 +69,13 @@ export default function ReviewComments ({ comments, fetchComments }) {
     </div>
   );
 }
+
+ReviewComments.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id:PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  fetchComments: PropTypes.func.isRequired,
+};

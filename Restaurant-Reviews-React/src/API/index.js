@@ -27,7 +27,7 @@ export const getUsers = async (setUsers, setLoading, setError) => {
     }
     setLoading(false);  
   }catch(err) {
-    setError('Failed to load users.');
+    setError('Failed to load users.',err);
     setLoading(false);
   }
 };
@@ -71,7 +71,7 @@ export const getCategories = async (setCategories, setLoading, setError) => {
     }
     setLoading(false);
   }catch(err) {
-    setError('Failed to load categories.');
+    setError('Failed to load categories.', err);
     setLoading(false);
   }
 }
@@ -98,7 +98,7 @@ export const getRestaurants = async (setRestaurants, setLoading, setError) => {
     }
     setLoading(false);
   } catch (err) {
-    setError("Failed to load restaurants");
+    setError("Failed to load restaurants", err);
     setLoading(false);
   }
 };
@@ -135,7 +135,7 @@ export const getRestaurantReviews = async (id, setRestaurantReviews, setLoading,
     }
     setLoading(false);
   }catch (err) {
-    setError('Failed to load reviews');
+    setError('Failed to load reviews', err);
     setLoading(false);
   }
 };
@@ -176,7 +176,7 @@ export const getUserReviews = async (userId, setUserReviews, setLoading, setErro
     }
     setLoading(false);
   }catch (err) {
-    setError('Failed to load reviews');
+    setError('Failed to load reviews', err);
     setLoading(false);
   }
 };

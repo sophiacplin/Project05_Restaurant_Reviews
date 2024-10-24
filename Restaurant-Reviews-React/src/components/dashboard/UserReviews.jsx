@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserReviews } from '../../API';
 import UserContext from '../login/UserContext';
 import DashboardSidebar from '../navigation/DashboardSidebar'
