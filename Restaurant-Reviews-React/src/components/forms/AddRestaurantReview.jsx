@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import UserContext from "../login/UserContext";
 import { addRestaurantReview } from "../../API";
+import './css/addRestaurantReview.css';
 
 
 
@@ -9,7 +10,7 @@ import { addRestaurantReview } from "../../API";
 
 export default function AddRestaurantReview () {
   const { id } = useParams();
-  const { isAuthenticated, logout, user } = useContext(UserContext);
+  const { isAuthenticated } = useContext(UserContext);
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
   const [error, setError] = useState(null);
@@ -22,44 +23,49 @@ export default function AddRestaurantReview () {
       const token = localStorage.getItem('token');
       await addRestaurantReview(id, review, token);
       alert('Review submitted successfully!');
+      reloadReviews();
     }catch(err) {
       console.error('Failed to submit review', err);
       setError('Failed to submit review');
     }
   };
 
+
   return(
     <>
-      {isAuthenticated ? (<form onSubmit={handleSubmit}>
-        <h3>Add a review</h3>
-        <label>Rating: </label>
-        <label>
-          <div className="rating-options" >
-            {[1, 2, 3, 4, 5].map((num) => (
-              <label key={num}>
-                <input 
-                type="radio"
-                name="rating"
-                value={{num}}
-                checked={rating === num}
-                onChange={() => setRating(num)}
-                required
-                />
-                {num}
-              </label>
-            ))}
-          </div>
-          
-        </label>
-        <textarea 
-          placeholder="Write your review here"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-        <button type="submit" >Post</button>
-        {error && <p>{error}</p>}
-      </form>
+      {isAuthenticated ? (
+        <div id="add-review-container" >
+          <form id="add-review-form" onSubmit={handleSubmit}>
+          <h3>Add a review</h3>
+          <label>Rating: </label>
+          <label>
+            <div className="rating-options" >
+              {[1, 2, 3, 4, 5].map((num) => (
+                <label key={num}>
+                  <input 
+                  type="radio"
+                  name="rating"
+                  value={{num}}
+                  checked={rating === num}
+                  onChange={() => setRating(num)}
+                  required
+                  />
+                  {num}
+                </label>
+              ))}
+            </div>
+            
+          </label>
+          <textarea 
+            placeholder="Write your review here"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            required
+          />
+          <button type="submit" >Post</button>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
       ) : (
         <>
           <h2>Add a Review</h2>

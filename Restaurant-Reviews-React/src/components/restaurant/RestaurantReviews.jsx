@@ -43,7 +43,6 @@ export default function RestaurantReviews() {
       ):(
           <p>No reviews available for this restaurant.</p>
       )} 
-      <button onClick={() => nav(`/restaurant/${id}/review/form`)} >Add Review</button>
     </div>
   );
 }

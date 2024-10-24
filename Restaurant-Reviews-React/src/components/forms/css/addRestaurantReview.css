@@ -1,0 +1,15 @@
+
+#add-review-container {
+  display: block;
+  text-align: -webkit-center;
+}
+
+#add-review-form {
+  text-align: -webkit-center;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 500px;
+  padding: 20px;
+}

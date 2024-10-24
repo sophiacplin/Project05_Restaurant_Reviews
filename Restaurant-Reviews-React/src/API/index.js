@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://project05-restaurant-reviews.onrender.com/api',
   headers: {'Content-Type': 'application/json'},
+  withCredentials: true,
 });
 
 //users routes
@@ -89,6 +90,7 @@ export const fetchAllRestaurants = async () => {
 export const getRestaurants = async (setRestaurants, setLoading, setError) => {
   try {
     const data = await fetchAllRestaurants();
+    console.log('Fetched data:', data);
     if (Array.isArray(data)) {
       setRestaurants(data);
     } else {
@@ -150,6 +152,8 @@ export const addRestaurantReview = async (id, review, token) => {
   return response.data;
 }
 
+
+//Comment routes
 export const fetchReviewComments = async (reviewId) => {
   try{
     const response = await apiClient.get(`/comments/reviews/${reviewId}`);
@@ -173,4 +177,16 @@ export const getReviewComments = async(reviewId, setComments, setLoading) => {
     setLoading(false);
   }
 };
+
+export const addReviewComment = async (id, text, token) => {
+  const response = await apiClient.post(`/comments/reviews/${id}`,
+    text,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response.data
+}
 
