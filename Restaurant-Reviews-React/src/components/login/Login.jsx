@@ -12,7 +12,7 @@ export default function Login () {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post('/api/users/login', {
+      const response = await axios.post('https://project05-restaurant-reviews.onrender.com/api/users/login', {
         username,
         password,
       });
