@@ -87,9 +87,9 @@ reviewRouter.patch('/:id', authenticateToken, async(req, res, next) => {
 
     const updatedReview = await updateReview({rating, text, review_id, user_id});
     if(updatedReview){
-      res.send(updatedReview);
+      res.status(200).send(updatedReview);
     }else{
-      res.status(403).send({message:'Failed to update review'});
+      res.status(500).send({message:'Failed to update review'});
     }
   }catch(err){
     next(err);

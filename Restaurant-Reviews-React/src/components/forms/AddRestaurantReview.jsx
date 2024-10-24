@@ -23,12 +23,16 @@ export default function AddRestaurantReview () {
       const token = localStorage.getItem('token');
       await addRestaurantReview(id, review, token);
       alert('Review submitted successfully!');
-      reloadReviews();
+      nav(`/restaurant/${id}`, {state: {activeTab: "reviews"}});
     }catch(err) {
       console.error('Failed to submit review', err);
       setError('Failed to submit review');
     }
   };
+
+  const handleCancelClick = () => {
+    nav(`/restaurant/${id}`, {state: {activeTab: "reviews"}});
+  }
 
 
   return(
@@ -36,7 +40,7 @@ export default function AddRestaurantReview () {
       {isAuthenticated ? (
         <div id="add-review-container" >
           <form id="add-review-form" onSubmit={handleSubmit}>
-          <h3>Add a review</h3>
+          <h3>Add a Review</h3>
           <label>Rating: </label>
           <label>
             <div className="rating-options" >
@@ -62,8 +66,9 @@ export default function AddRestaurantReview () {
             onChange={(e) => setText(e.target.value)}
             required
           />
-          <button type="submit" >Post</button>
           {error && <p>{error}</p>}
+          <button type="submit" >Post</button>
+          <button onClick={handleCancelClick}>Cancel</button>
         </form>
       </div>
       ) : (

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RestaurantInfo from "./RestaurantInfo";
 import RestaurantReviews from "./RestaurantReviews";
 import AddRestaurantReview from "../forms/AddRestaurantReview";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 
 
@@ -10,6 +10,14 @@ export default function RestaurantPage (){
   const [activeTab, setActiveTab] = useState("info");
   const {id} = useParams();
   const nav = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.state && location.state.activeTab) {
+      setActiveTab(location.state.activeTab);
+    }
+  }, [location.state]);
+
   const handleClick = () => {
     nav(`/restaurant/${id}/review/form`)
   }

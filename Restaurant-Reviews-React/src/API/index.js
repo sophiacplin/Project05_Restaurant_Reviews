@@ -150,7 +150,22 @@ export const addRestaurantReview = async (id, review, token) => {
     }
   );
   return response.data;
-}
+};
+
+export const updateUserReview = async (reviewId, review, token) => {
+  try{
+    const response = await apiClient.patch(`/reviews/${reviewId}`, review, {
+      headers:{
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  }catch (err) {
+    console.error("Error updating review:", err);
+    throw err;
+  }
+};
 
 
 //Comment routes
@@ -164,29 +179,36 @@ export const fetchReviewComments = async (reviewId) => {
   }
 };
 
-export const getReviewComments = async(reviewId, setComments, setLoading) => {
+export const getReviewComments = async(reviewId) => {
   try{
     const data = await fetchReviewComments(reviewId);
     if(Array.isArray(data)) {
-      setComments(data);
+      return data;
     }else {
       throw new Error('Expected and array of comments');
     }
-    setLoading(false);
   }catch(err) {
-    setLoading(false);
+    console.error("Error fetching comments", err);
+    return [];
   }
 };
 
-export const addReviewComment = async (id, text, token) => {
-  const response = await apiClient.post(`/comments/reviews/${id}`,
-    text,
+export const addReviewComment = async (reviewId, text, token) => {
+  try{const response = await apiClient.post(`/comments/reviews/${reviewId}`,
+    {text},
     {
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     }
   );
+  console.log('Comment submitted successfully:', response.data);
   return response.data
-}
+  }catch (err){
+    console.error('Failed to submit comment:', err);
+    throw err;
+  }
+};
+
 

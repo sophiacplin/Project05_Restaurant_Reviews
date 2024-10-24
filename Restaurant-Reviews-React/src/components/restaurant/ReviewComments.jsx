@@ -3,26 +3,15 @@ import { getReviewComments } from "../../API";
 
 
 
-export default function ReviewComments ({reviewId}) {
-  const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function ReviewComments ({ reviewId, comments, fetchComments }) {
 
   useEffect(() => {
-    const fetchComments = async () => {
-      try{
-        await getReviewComments(reviewId, setComments, setLoading);
-      }catch(err) {
-        console.error('Error fetching comment: ', err);
-      }
-    };
-    if(reviewId) {
-      fetchComments();
-    }
+    if(comments.length === 0){
+    fetchComments();
+  }
   }, [reviewId]);
 
-  if(loading) {
-    return <p>Loading comments...</p>;
-  }
+
 
   return(
     <div className="comments-section">

@@ -16,6 +16,7 @@ import Login from './components/login/Login';
 import Register from './components/login/Register';
 import RestaurantPage from './components/restaurant/RestaurantPage';
 import AddRestaurantReview from './components/forms/AddRestaurantReview';
+import UpdateReview from './components/restaurant/UpdateReview';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/restaurant/:id' element = {<RestaurantPage/>} />
         <Route path='/restaurant/:id/review/form' element={<AddRestaurantReview/>} />
+        <Route path='/restaurant/review/:id/edit' element={<UpdateReview/>} />
         <Route path='/form/request-to-add-restaurant' element={<RequestToAddRestaurant/>} />
         <Route path='/search-restaurant-to-review' element={<SearchRestaurantToReview/>} />
         <Route path='/dashboard' element={<DashboardHome/>} />

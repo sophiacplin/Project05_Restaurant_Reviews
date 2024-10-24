@@ -16,10 +16,10 @@ export default function AllRestaurants() {
   }, []);
   
   if(loading) {
-    return <p>Loading...</p>;
+    return <p className="message">Loading...</p>;
   }
   if(error){
-    return <p>{error}</p>;
+    return <p className="message">{error}</p>;
   }
 
   return(
