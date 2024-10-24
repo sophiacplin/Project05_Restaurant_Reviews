@@ -6,9 +6,9 @@ import AllRestaurants from './components/home/AllRestaurants'
 import RequestToAddRestaurant from './components/forms/RequestToAddRestaurant';
 import SearchRestaurantToReview from './components/home/SearchRestaurantToReview';
 import UserReviews from './components/dashboard/UserReviews';
-import Profile from './components/Dashboard/Profile';
-import OwnerRestaurants from './components/Dashboard/OwnerRestaurants';
-import ManageUsers from './components/Dashboard/ManageUsers';
+import Profile from './components/dashboard/Profile';
+import OwnerRestaurants from './components/dashboard/OwnerRestaurants';
+import ManageUsers from './components/dashboard/ManageUsers';
 import ManageRestaurants from './components/dashboard/ManageRestaurants';
 import ManageCategory from './components/dashboard/ManageCategory';
 import DashboardHome from './components/dashboard/DashboardHome';
