@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchSingleRestaurant, updateUserReview } from "../../API";
+import { fetchRestaurantReviews, updateUserReview } from "../../API";
 
 
 
 export default function UpdateReview () {
-  const {id} = useParams();
+  const {restaurantId, reviewId} = useParams();
   const [rating, setRating] = useState("");
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
@@ -14,25 +14,28 @@ export default function UpdateReview () {
   useEffect(() => {
     const fetchReview = async () => {
       try{
-        const review = await fetchSingleRestaurant(id);
-        setRating(review.rating);
-        setText(review.text);
+        const reviews = await fetchRestaurantReviews(restaurantId);
+        reviews.map((review) => {
+          setRating(review.rating);
+          setText(review.text);
+        })
+        
       }catch (err){
         console.error("Failed to load review", err);
         setError("Failed to load review");
       }
     };
     fetchReview();
-  }, [id]);
+  }, [reviewId]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try{
       const review = {rating, text};
       const token = localStorage.getItem("token");
-      await updateUserReview(id, review, token);
+      await updateUserReview(reviewId, review, token);
       alert("Review updated successfully!");
-      nav(`restaurant/${id}`, {state: {activeTab: "reviews"}});
+      nav(`restaurant/${restaurantId}`, {state: {activeTab: "reviews"}});
     }catch(err) {
       console.error('Failed to update review', err);
       setError("Failed to update review");
