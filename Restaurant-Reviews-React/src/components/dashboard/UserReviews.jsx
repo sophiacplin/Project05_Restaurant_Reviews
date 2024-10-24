@@ -1,3 +1,4 @@
+import { useNavigate, useParams } from 'react-router-dom';
 import { getUserReviews } from '../../API';
 import UserContext from '../login/UserContext';
 import DashboardSidebar from '../navigation/DashboardSidebar'
@@ -11,6 +12,7 @@ export default function UserReviews() {
   const [userReviews, setUserReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const nav = useNavigate();
 
   useEffect(() => {
     if(user?.id){

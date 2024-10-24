@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/navigation/Navbar'
-import AllRestaurants from './components/Home/AllRestaurants';
+import AllRestaurants from './components/home/AllRestaurants'
 import RequestToAddRestaurant from './components/forms/RequestToAddRestaurant';
 import SearchRestaurantToReview from './components/home/SearchRestaurantToReview';
 import UserReviews from './components/dashboard/UserReviews';

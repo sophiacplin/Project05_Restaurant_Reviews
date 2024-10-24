@@ -33,8 +33,11 @@ export default function ManageRestaurants(){
           <div key={restaurant.id} className="manage-restaurant-card" >
             <p>{restaurant.name}</p>
             <p>ID: {restaurant.id}</p>
+            <p>Owner ID: {restaurant.owner_id}</p>
+            <button>Assign Owner</button>
             <button>Edit</button>
             <button>Delete</button>
+            
           </div>
         ))
       ) : (

@@ -155,6 +155,7 @@ export const fetchUserReviews = async (userId, token) => {
     const response = await apiClient.get(`/reviews/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     });
     return response.data;
