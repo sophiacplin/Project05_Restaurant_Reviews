@@ -7,9 +7,13 @@ const apiClient = axios.create({
 });
 
 //users routes
-export const fetchUsers = async () => {
+export const fetchUsers = async (token) => {
   try{
-    const response = await apiClient.get('/users/admin');
+    const response = await apiClient.get('/users',{
+      headers:{
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   }catch(err) {
     console.error('Error fetching users', err);
@@ -19,7 +23,8 @@ export const fetchUsers = async () => {
 
 export const getUsers = async (setUsers, setLoading, setError) => {
   try{
-    const data = await fetchUsers();
+    const token = localStorage.getItem('token');
+    const data = await fetchUsers(token);
     if(Array.isArray(data)) {
       setUsers(data);
     }else{
@@ -113,6 +118,25 @@ export const fetchSingleRestaurant = async (id) => {
     throw err;
   }
 };
+
+export const assignNewOwner = async (restaurantId, ownerId, token) => {
+  try{
+    const response = await apiClient.patch(
+      `/restaurants/${restaurantId}/owner`,
+      {owner_id:ownerId},
+      {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-Type':'application/json',
+        },
+      }
+    );
+    return response.data;
+  }catch (err) {
+    console.error('Error assigning new owner', err);
+    throw err;
+  }
+}
 
 //Review routes
 export const fetchRestaurantReviews = async (id) => {
