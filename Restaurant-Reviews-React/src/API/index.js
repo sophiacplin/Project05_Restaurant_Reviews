@@ -119,7 +119,7 @@ export const fetchSingleRestaurant = async (id) => {
   }
 };
 
-export const assignNewOwner = async (restaurantId, ownerId, token) => {
+export const assignOwner = async (restaurantId, ownerId, token) => {
   try{
     const response = await apiClient.patch(
       `/restaurants/${restaurantId}/owner`,
@@ -127,7 +127,6 @@ export const assignNewOwner = async (restaurantId, ownerId, token) => {
       {
         headers:{
           Authorization: `Bearer ${token}`,
-          'Content-Type':'application/json',
         },
       }
     );
@@ -136,7 +135,24 @@ export const assignNewOwner = async (restaurantId, ownerId, token) => {
     console.error('Error assigning new owner', err);
     throw err;
   }
-}
+};
+
+export const updateRestaurant = async (restaurantId, restaurantInfo, token) => {
+  try{
+    const response = await apiClient.patch(`/restaurants/${restaurantId}`, 
+      restaurantInfo, 
+      {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type':'application/json',
+      },
+    });
+    return response.data;
+  }catch (err) {
+    console.error("Failed to update restaurant", err);
+    throw err;
+  }
+};
 
 //Review routes
 export const fetchRestaurantReviews = async (id) => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DashboardSidebar from "../navigation/DashboardSidebar";
 import { getRestaurants } from "../../API";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,7 +10,7 @@ export default function ManageRestaurants(){
   const [restaurants, setRestaurants]  = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const nav = useNavigate();
 
   useEffect(() => {
     getRestaurants(setRestaurants, setLoading, setError)
@@ -33,8 +33,8 @@ export default function ManageRestaurants(){
             <p>{restaurant.name}</p>
             <p>ID: {restaurant.id}</p>
             <p>Owner ID: {restaurant.owner_id}</p>
-            <button>Assign Owner</button>
-            <button>Edit</button>
+            <button onClick={() => nav(`/form/assign-owner/restaurant/${restaurant.id}`)}>Assign Owner</button>
+            <button onClick={() => nav(`/form/restaurant/${restaurant.id}/edit`)} >Edit</button>
             <button>Delete</button>
             
           </div>

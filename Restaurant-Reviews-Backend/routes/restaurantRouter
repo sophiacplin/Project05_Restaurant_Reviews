@@ -67,7 +67,7 @@ restaurantRouter.get('/users/:id', authenticateToken, authorizeRoles(['owner', '
 
 //update a restaurant
 restaurantRouter.patch('/:id', authenticateToken, authorizeRoles(['owner', 'admin']), async(req, res, next) => {
-  const restaurant_id = req.params.id;
+  const {id: restaurant_id} = req.params.id;
   const image = req.body.image;
   const name = req.body.name;
   const category = req.body.category;
@@ -88,11 +88,12 @@ restaurantRouter.patch('/:id', authenticateToken, authorizeRoles(['owner', 'admi
 
     const updatedRestaurant = await updateRestaurant({image, name, category, phone, address, open_time, closing_time, restaurant_id});
     if(updatedRestaurant){
-      res.send({Message: 'Restaurant updated successfully', updatedRestaurant});
+      res.status(200).send({Message: 'Restaurant updated successfully', updatedRestaurant});
     }else{
       res.status(404).send({Message: 'Restaurant not found'});
     }
   }catch(err){
+    console.error('Internal Server Error', err);
     next(err);
   }
 });

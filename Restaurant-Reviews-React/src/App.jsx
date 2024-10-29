@@ -17,6 +17,9 @@ import Register from './components/login/Register';
 import RestaurantPage from './components/restaurant/RestaurantPage';
 import AddRestaurantReview from './components/forms/AddRestaurantReview';
 import UpdateReview from './components/restaurant/UpdateReview';
+import AssignOwner from './components/forms/AssignOwner';
+import EditRestaurant from './components/forms/EditRestaurant';
+
 
 
 function App() {
@@ -32,6 +35,8 @@ function App() {
         <Route path='/restaurant/:id/review/form' element={<AddRestaurantReview/>} />
         <Route path='/restaurant/:restaurantId/review/:reviewId/edit' element={<UpdateReview/>} />
         <Route path='/form/request-to-add-restaurant' element={<RequestToAddRestaurant/>} />
+        <Route path='/form/assign-owner/restaurant/:id' element = {<AssignOwner/>} />
+        <Route path='form/restaurant/:id/edit' element = {<EditRestaurant/>} />
         <Route path='/search-restaurant-to-review' element={<SearchRestaurantToReview/>} />
         <Route path='/dashboard' element={<DashboardHome/>} />
         <Route path='/dashboard/users/:id' element={<Profile/>} />
