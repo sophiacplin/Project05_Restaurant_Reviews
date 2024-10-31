@@ -1,0 +1,19 @@
+#manage-category-title {
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+#manage-category-title > button {
+  align-items: end;
+}
+
+#manage-category-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 50px;
+  margin-left: 200px;
+}
+
+#category-card {
+  margin: 20px;
+}

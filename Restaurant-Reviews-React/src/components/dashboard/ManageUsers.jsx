@@ -25,23 +25,26 @@ export default function ManageUsers() {
   return(
     <>
     <DashboardSidebar />
-    <div className="manage-users-container">
-      {Array.isArray(users) && users.length > 0 ? (
-        users.map((user) => (
-          <div key={user.id} className="user-card" >
-          <img src={user.image} alt={`Image of ${user.name}`} />
-          <h3>{user.name}</h3>
-          <p>ID: {user.id}</p>
-          <p>Username: {user.username}</p>
-          <p>Role: {user.role}</p>
-          <button onClick={() => console.log(`Delete ${user.id}`)} >
-            Delete User
-          </button>
-        </div>
-        ))
-      ) : (
-        <p>No users available</p>
-      )}
+    <div id="manage-users-page">
+      <h2>Manage Users</h2>
+      <div id="manage-users-container">
+        {Array.isArray(users) && users.length > 0 ? (
+          users.map((user) => (
+            <div key={user.id} id="user-card" >
+            <img src={user.image} alt={`Image of ${user.name}`} />
+            <h3>{user.name}</h3>
+            <p>ID: {user.id}</p>
+            <p>Username: {user.username}</p>
+            <p>Role: {user.role}</p>
+            <button onClick={() => console.log(`Delete ${user.id}`)} >
+              Delete User
+            </button>
+          </div>
+          ))
+        ) : (
+          <p>No users available</p>
+        )}
+      </div>
     </div>
     </>
   )

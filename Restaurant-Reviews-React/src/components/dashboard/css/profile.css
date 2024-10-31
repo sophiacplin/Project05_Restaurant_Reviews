@@ -1,0 +1,8 @@
+#profile-main-section {
+ margin-top: 100px; 
+ margin-left: 200px;
+}
+
+#profile-main-section > h2 {
+  margin-bottom: 50px;
+}

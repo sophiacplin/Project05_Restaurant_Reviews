@@ -1,0 +1,14 @@
+#user-reviews-page {
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+#user-reviews-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 50px;
+}
+
+#user-review-card {
+  margin: 20px;
+}

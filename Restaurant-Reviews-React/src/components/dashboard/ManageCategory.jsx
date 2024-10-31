@@ -1,7 +1,7 @@
 import DashboardSidebar from "../navigation/DashboardSidebar";
 import { useState, useEffect } from "react";
 import { getCategories } from "../../API";
-
+import './css/ManageCategory.css';
 
 export default function ManageCategory() {
   const [categories, setCategories] = useState([]);
@@ -23,21 +23,23 @@ export default function ManageCategory() {
   return(
     <>
     <DashboardSidebar />
-    <div className="dashboard-main-section">
+    <div id="manage-category-title">
       <h2>Manage Categories</h2>
-      <div className="manage-categories-container">
-        {Array.isArray(categories) && categories.length > 0 ? (
-          categories.map((category) => (
-            <div key={category.id} id="category-card">
-              <h3>{category.name}</h3>
-              <button>Delete</button>
-            </div>
-          ))
-        ) : (
-          <p>No categories available.</p>
-        )}
+      <button>Add Category</button>
       </div>
+    <div id="manage-category-container">
+      {Array.isArray(categories) && categories.length > 0 ? (
+        categories.map((category) => (
+          <div key={category.id} id="category-card">
+            <h3>{category.name}</h3>
+            <button>Delete</button>
+          </div>
+        ))
+      ) : (
+        <p>No categories available.</p>
+      )}
     </div>
+    
     </>
   )
 }

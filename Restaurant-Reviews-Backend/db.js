@@ -352,7 +352,6 @@ try{
 
 let restaurantUpdates = [];
 let restaurantValues = [];
-let userUpdates = [];
 let userValues = [];
 
 if(owner_id !== undefined){
@@ -377,17 +376,18 @@ if(restaurantUpdates.length > 0){
 
 let userResponse = null;
 if(owner_id !== undefined){
-  userUpdates.push(`role = 'owner'`);
-  userValues.push(owner_id);
-}
-  
   const userSQL = `
   UPDATE users
-  SET ${userUpdates.join(', ')}
-  WHERE id = $1
+  SET role = 'owner'
+  WHERE id = $1 AND role = 'user'
   RETURNING *;
   `;
+
+  userValues.push(owner_id);
   userResponse = await client.query(userSQL, userValues);
+}
+  
+
   
   await client.query('COMMIT');
 

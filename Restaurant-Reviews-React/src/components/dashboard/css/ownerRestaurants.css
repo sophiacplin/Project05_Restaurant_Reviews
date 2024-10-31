@@ -1,19 +1,19 @@
-#manage-users-page {
+#owner-restaurants-page {
   margin-top: 100px;
   margin-left: 200px;
 }
 
-#manage-users-container {
+#owner-restaurants-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 50px;
 }
 
-#user-card {
+#owner-restaurant-card {
   margin: 20px;
 }
 
-#user-card > img {
+#owner-restaurant-card > img {
   width: 200px;
+  height: 200px;
 }
-

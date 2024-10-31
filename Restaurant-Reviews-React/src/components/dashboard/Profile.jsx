@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import DashboardSidebar from "../navigation/DashboardSidebar";
-import './css/dashboardMainSection.css';
 import { fetchSingleUser } from "../../API";
 import UserContext from '../login/UserContext';
+import './css/profile.css';
 
 
 export default function Profile() {
@@ -40,8 +40,8 @@ if(error) {
   return(
     <>
       <DashboardSidebar />
-      <div className="profile-main-section">
-        <h2>Profile</h2>
+      <div id="profile-main-section">
+        <h2>My Profile</h2>
         <img src={user?.image} alt={`Image of ${user?.name}`} />
         <p>Name: {user?.name}</p>
         <p>Role: {user?.role}</p>

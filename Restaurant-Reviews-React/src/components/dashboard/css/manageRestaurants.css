@@ -1,19 +1,18 @@
-#manage-users-page {
+#manage-restaurants-page {
   margin-top: 100px;
   margin-left: 200px;
 }
 
-#manage-users-container {
+#manage-restaurants-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 50px;
 }
 
-#user-card {
+#manage-restaurant-card {
   margin: 20px;
 }
 
-#user-card > img {
+#manage-restaurant-card > img {
   width: 200px;
 }
-
