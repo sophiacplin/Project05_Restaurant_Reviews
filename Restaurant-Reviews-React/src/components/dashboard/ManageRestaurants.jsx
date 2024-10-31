@@ -27,6 +27,7 @@ export default function ManageRestaurants(){
     <>
     <DashboardSidebar />
     <div className="manage-restaurants-container" >
+      <button>Add a Restaurant</button>
       {Array.isArray(restaurants) && restaurants.length > 0 ? (
         restaurants.map((restaurant) => (
           <div key={restaurant.id} className="manage-restaurant-card" >

@@ -119,6 +119,38 @@ export const fetchSingleRestaurant = async (id) => {
   }
 };
 
+export const fetchOwnerRestaurant = async (userId, token) => {
+  try{
+    const response = await apiClient.get(`/restaurants/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+    });
+    return response.data
+  }catch(err) {
+    console.error('Error fetching owner restaurants', err);
+    throw err;
+  }
+};
+
+export const getOwnerRestaurants = async (userId, setOwnerRestaurants, setLoading, setError) => {
+  try{
+    const token = localStorage.getItem('token');
+    const data = await fetchOwnerRestaurant(userId, token);
+    if(Array.isArray(data)){
+      setOwnerRestaurants(data);
+    }else {
+      throw new Error('Expected an array of restaurants');
+    }
+    setLoading(false);
+  }catch (err) {
+    console.error('Failed loading owner restaurants', err);
+    setError('Failed to load restaurants');
+    setLoading(false);
+  }
+};
+
 export const assignOwner = async (restaurantId, ownerId, token) => {
   try{
     const response = await apiClient.patch(
