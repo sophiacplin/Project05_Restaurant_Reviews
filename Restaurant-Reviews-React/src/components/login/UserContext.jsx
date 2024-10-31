@@ -19,7 +19,7 @@ export const UserProvider = ({children}) => {
           id: decodedToken.id,
           name: decodedToken.name,
           role: decodedToken.role,
-        };
+        }; 
         setUser(userInfo);
         setIsAuthenticated(true);
       }catch(err) {

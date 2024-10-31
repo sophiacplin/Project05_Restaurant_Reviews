@@ -18,6 +18,7 @@ export default function Login () {
       });
 
       const {token, user} = response.data;
+      console.log("Response data:", response.data);
 
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));

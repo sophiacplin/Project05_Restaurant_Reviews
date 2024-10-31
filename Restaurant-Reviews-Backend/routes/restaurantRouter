@@ -67,7 +67,7 @@ restaurantRouter.get('/users/:id', authenticateToken, authorizeRoles(['owner', '
 
 //update a restaurant
 restaurantRouter.patch('/:id', authenticateToken, authorizeRoles(['owner', 'admin']), async(req, res, next) => {
-  const {id: restaurant_id} = req.params.id;
+  const restaurant_id = req.params.id;
   const image = req.body.image;
   const name = req.body.name;
   const category = req.body.category;

@@ -137,9 +137,9 @@ export const assignOwner = async (restaurantId, ownerId, token) => {
   }
 };
 
-export const updateRestaurant = async (restaurantId, restaurantInfo, token) => {
+export const updateRestaurant = async (id, restaurantInfo, token) => {
   try{
-    const response = await apiClient.patch(`/restaurants/${restaurantId}`, 
+    const response = await apiClient.patch(`/restaurants/${id}`, 
       restaurantInfo, 
       {
       headers: {
@@ -147,6 +147,7 @@ export const updateRestaurant = async (restaurantId, restaurantInfo, token) => {
         'Content-Type':'application/json',
       },
     });
+    console.log('Updated response', response.data);
     return response.data;
   }catch (err) {
     console.error("Failed to update restaurant", err);
