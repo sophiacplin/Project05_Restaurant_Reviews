@@ -1,3 +1,32 @@
-.login-main-section {
-  margin-top: 100px;
+#login-main-section {
+  margin-top: 80px;
+  padding: 10px;
+  text-align: -webkit-center;
+}
+
+#login-main-section > h2 {
+  padding: 10px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 250px;
+  padding-top: 35px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  place-content: space-around;
+  align-items: center;
+}
+
+
+#login-form > input {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#login-form > button {
+  margin-top: 5px;
 }

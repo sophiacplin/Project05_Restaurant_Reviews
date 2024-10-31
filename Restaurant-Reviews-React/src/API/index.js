@@ -66,20 +66,32 @@ export const fetchCategories = async () => {
   }
 };
 
-export const getCategories = async (setCategories, setLoading, setError) => {
-  try{
-    const data = await fetchCategories();
-    if(Array.isArray(data)) {
-      setCategories(data);
-    }else {
-      throw new Error('Expected an array of categories.')
-    }
-    setLoading(false);
-  }catch(err) {
-    setError('Failed to load categories.', err);
-    setLoading(false);
-  }
-}
+// export const getCategories = async (setCategories, setLoading, setError) => {
+//   try{
+//     const data = await fetchCategories();
+//     if(Array.isArray(data)) {
+//       setCategories(data);
+//     }else {
+//       throw new Error('Expected an array of categories.')
+//     }
+//     setLoading(false);
+//   }catch(err) {
+//     setError('Failed to load categories.', err);
+//     setLoading(false);
+//   }
+// };
+
+
+export const addCategory = async (name, token) => {
+  const response = await apiClient.post('/category/admin',
+    {name},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+  });
+  return response.data;
+};
 
 //restaurants routes
 export const fetchAllRestaurants = async () => {
@@ -242,11 +254,7 @@ export const getUserReviews = async (userId, setUserReviews, setLoading, setErro
   try{
     const token = localStorage.getItem('token');
     const data = await fetchUserReviews(userId, token);
-    if(Array.isArray(data)) {
-      setUserReviews(data);
-    }else {
-      throw new Error('Expected an array of reviews');
-    }
+    setUserReviews(data);
     setLoading(false);
   }catch (err) {
     setError('Failed to load reviews', err);

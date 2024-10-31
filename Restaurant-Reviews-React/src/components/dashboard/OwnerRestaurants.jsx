@@ -36,24 +36,25 @@ export default function OwnerRestaurants(){
   return(
     <>
     <DashboardSidebar />
-    <div id="owner-restaurants-page">
+    <div id="owner-restaurants-title">
       <h2>Restaurants You Own</h2>
-      <div id="owner-restaurants-container">
-        {ownerRestaurants.length > 0 ? (
-          ownerRestaurants.map((restaurant) => (
-            <div key={restaurant.id} id="owner-restaurant-card">
-              <img src={restaurant.image} alt={`Image of ${restaurant.name}`} />
-              <p>{restaurant.name}</p>
-              <p>ID: {restaurant.id}</p>
-              <button onClick={() => nav(`/form/restaurant/${restaurant.id}/edit`)} >Edit</button>
-              <button>Delete</button>
-            </div>
-          ))
-        ) : (
-          <p>You do not own any restaurants.</p>
-        )}
-      </div>
     </div>
+    <div id="owner-restaurants-container">
+      {ownerRestaurants.length > 0 ? (
+        ownerRestaurants.map((restaurant) => (
+          <div key={restaurant.id} id="owner-restaurant-card">
+            <img src={restaurant.image} alt={`Image of ${restaurant.name}`} />
+            <p>{restaurant.name}</p>
+            <p>ID: {restaurant.id}</p>
+            <button onClick={() => nav(`/form/restaurant/${restaurant.id}/edit`)} >Edit</button>
+            <button>Delete</button>
+          </div>
+        ))
+      ) : (
+        <p>You do not own any restaurants.</p>
+      )}
+    </div>
+    
     </>
   )
 }

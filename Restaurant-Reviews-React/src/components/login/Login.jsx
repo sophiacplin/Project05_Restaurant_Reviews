@@ -37,27 +37,31 @@ export default function Login () {
   }
 
   return(
-    <div className="login-main-section">
+    <div id="login-main-section">
       <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <label>
+      <form id="login-form" onSubmit={handleLogin}>
+        <label htmlFor='username'>
           Username:
+        </label>
           <input
             type="text"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
+        
+        <label htmlFor='password'>
           Password:
+        </label>
           <input 
             type="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
+        
         {errorMessage && <p className="error-message" >{errorMessage}</p>}
         <button type="submit">Login</button>
         <button onClick={handleNavToRegister}>Sign Up</button>

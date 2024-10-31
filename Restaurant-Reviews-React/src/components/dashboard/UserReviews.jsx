@@ -53,7 +53,7 @@ export default function UserReviews() {
               </div>
             ))
           ) : (
-            <p>You have not review any restaurant yet.</p>
+            <p>You have no reviews.</p>
           )}
         </div>
       </div>

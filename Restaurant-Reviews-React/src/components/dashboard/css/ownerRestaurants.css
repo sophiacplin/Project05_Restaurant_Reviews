@@ -1,4 +1,4 @@
-#owner-restaurants-page {
+#owner-restaurants-title {
   margin-top: 100px;
   margin-left: 200px;
 }
@@ -6,7 +6,11 @@
 #owner-restaurants-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 50px;
+  margin-left: 200px;
+}
+
+#owner-restaurants-container > p {
+  margin-left: 20px;
 }
 
 #owner-restaurant-card {
